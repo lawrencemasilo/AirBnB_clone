@@ -29,10 +29,10 @@ class BaseModel:
         """
         Returns dict representation of object.
         """
-        instance_dict = self.__dict__
+        instance_dict = dict(self.__dict__)
 
-        instance_dict["__class__"] = self.id
-        instance_dict["__class__"] = str(self.created_at.isoformat())
-        instance_dict["__class__"] = str(self.updated_at.isoformat())
+        instance_dict['__class__'] = str(self.__class__.__name__)
+        instance_dict['created at'] = self.created_at.isoformat()
+        instance_dict['updated at'] = self.updated_at.isoformat()
 
         return instance_dict
