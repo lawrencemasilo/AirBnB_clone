@@ -31,8 +31,8 @@ class BaseModel:
         """
         instance_dict = self.__dict__
 
-        instance_dict["__class__"] = self.id
-        instance_dict["__class__"] = str(self.created_at.isoformat())
-        instance_dict["__class__"] = str(self.updated_at.isoformat())
+        instance_dict["__class__"] = self.__class__.__name__
+        instance_dict["create_at"] = self.created_at.isoformat()
+        instance_dict["update_at"] = self.updated_at.isoformat()
 
         return instance_dict
