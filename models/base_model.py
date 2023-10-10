@@ -2,6 +2,7 @@
 """This module contains the base class for all classes"""
 import uuid
 import datetime
+import models
 
 
 class BaseModel:
@@ -11,6 +12,7 @@ class BaseModel:
         self.id = str(uuid.uuid4())
         self.created_at = datetime.datetime.now()
         self.updated_at = datetime.datetime.now()
+        models.storage.new(self)
 
     def __str__(self):
         """
@@ -24,6 +26,7 @@ class BaseModel:
         Updates the attribute with current datetime.
         """
         self.updated_at = datetime.datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         """
