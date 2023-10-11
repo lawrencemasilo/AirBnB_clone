@@ -2,6 +2,7 @@
 """command interpreter"""
 import cmd
 from models.base_model import BaseModel
+from models.user import User
 from models.place import Place
 from models.state import State
 from models.city import City
@@ -17,6 +18,7 @@ class HBNBCommand(cmd.Cmd, BaseModel):
     prompt = "(hbnb) "
     __classes = {
             "BaseModel": BaseModel,
+            "User": User,
             "Place": Place,
             "State": State,
             "City": City,
