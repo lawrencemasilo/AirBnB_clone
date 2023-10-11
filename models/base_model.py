@@ -41,7 +41,7 @@ class BaseModel:
         """
         Returns dict representation of object.
         """
-        instance_dict = self.__dict__
+        instance_dict = dict(self.__dict__)
 
         instance_dict["__class__"] = self.__class__.__name__
         instance_dict["created_at"] = self.created_at.isoformat()
