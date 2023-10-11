@@ -2,7 +2,7 @@
 """Import modules for tests."""
 import unittest
 import os
-from models.base_models import BaseModel
+from models.base_model import BaseModel
 from models.place import Place
 
 

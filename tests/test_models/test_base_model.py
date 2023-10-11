@@ -26,6 +26,12 @@ class TestBaseModel(unittest.TestCase):
         except:
             pass
 
+    """def test_pep8_basemodel(self):
+        style = pep8.StyleGuide(quiet=True)
+        p = style.check_files(['models/base_model.py'])
+        self.assertEqual(p.total_errors, 0, "fix pep8")
+    """
+
     def test_init(self):
         """Tests for init"""
         self.assertTrue(isinstance(self.testBase, BaseModel))

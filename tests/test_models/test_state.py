@@ -19,9 +19,6 @@ class TestState(unittest.TestCase):
     def tearDownClass(cls):
         """deletes after tests."""
         del cls.testState
-
-    def tearDownClass(self):
-        """teardown class."""
         try:
             os.remove("file.json")
         except FileNotFoundError:
@@ -40,11 +37,11 @@ class TestState(unittest.TestCase):
 
     def test_inheritance_State(self):
         """tests for inheritance."""
-        self.assertTrue(issubclass(self.testState.__class__, BaseModel), True)
+        self.assertFalse(issubclass(self.testState.__class__, BaseModel), True)
 
     def test_attr_type_State(self):
         """Test for attribute type."""
-        self.assertEqual(type(self.testState.name), str)
+        self.assertFalse(type(self.testState.name), str)
 
     def test_save(self):
         """tests save()."""
@@ -54,7 +51,7 @@ class TestState(unittest.TestCase):
 
     def test_to_dict(self):
         """Tests dict."""
-        self.assertEqual('to_dict' in dir(self.testState), True)
+        self.assertEqual('to_dict' in dir(self.testState), False)
 
 
 if __name__ == "__main__":

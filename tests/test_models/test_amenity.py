@@ -19,9 +19,6 @@ class TestAmenity(unittest.TestCase):
     def tearDownClass(cls):
         """Deletes after test is done."""
         del cls.testAmenity
-
-    def tearDownClass(self):
-        """Does above."""
         try:
             os.remove("file.json")
         except:

@@ -40,7 +40,7 @@ class TestUser(unittest.TestCase):
         self.assertTrue(isinstance(self.testUser, User))
         self.assertTrue(issubclass(type(self.testUser), BaseModel))
         self.assertTrue('email' in self.testUser.__dict__)
-        self.assertTrue('id' in seld.testUser.__dict__)
+        self.assertTrue('id' in self.testUser.__dict__)
         self.assertTrue('created_at' in self.testUser.__dict__)
         self.assertTrue('updated_at' in self.testUser.__dict__)
         self.assertTrue('password' in self.testUser.__dict__)
