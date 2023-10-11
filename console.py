@@ -18,10 +18,9 @@ class HBNBCommand(cmd.Cmd, BaseModel):
         """handles empty lines"""
         pass
 
-    """ def postcmd(self):
-        handles end of file(Ctrl^D) command
-        if line == "EOF":
-            return True"""
+    def postcmd(self, stop, line):
+        """handles end of file(Ctrl^D) command"""
+        return cmd.Cmd.postcmd(self, stop, line)
 
     def do_quit(self, line):
         """handles (quit) command"""
@@ -157,8 +156,10 @@ class HBNBCommand(cmd.Cmd, BaseModel):
         if len(args) == 3:
             print("** value missing **")
             return
-        instance = self.__classes[args[0]](args[2] == args[3])
-        storage.save()
+        key = "{}.{}".format(args[0], args[1])
+        obj = storage.all()[key]
+        setattr(obj, args[2], args[3])
+        obj.save()
 
     def help_update(self):
         """(update) command documentation"""
