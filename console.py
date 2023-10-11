@@ -2,10 +2,6 @@
 """command interpreter"""
 import cmd
 from models.base_model import BaseModel
-<<<<<<< HEAD
-=======
-from models.user import User
->>>>>>> 96486efb1243ddfbfabe7dae70460e34a822cca3
 
 
 class HBNBCommand(cmd.Cmd, BaseModel):
