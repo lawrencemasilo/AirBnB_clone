@@ -21,9 +21,6 @@ class TestReview(unittest.TestCase):
     def tearDownClass(cls):
         """deletes class after test."""
         del cls.testReview
-
-    def tearDownClass(self):
-        """tears down class."""
         try:
             os.remove("file.json")
         except FileNotFoundError:
