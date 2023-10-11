@@ -7,7 +7,7 @@ from models.amenity import Amenity
 
 
 class TestAmenity(unittest.TestCase):
-    """."""
+    """Tests for the amenity class."""
 
     @classmethod
     def setUpClass(cls):
