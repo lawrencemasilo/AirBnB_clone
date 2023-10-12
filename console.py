@@ -137,9 +137,10 @@ class HBNBCommand(cmd.Cmd, BaseModel):
             print("** class doesn't exist **")
             return
         else:
+            class_name = args[0]
             for obj in storage.all().values():
-                if obj.__class__.__name__ == args[0]:
-                    objectList.append(str(obj))
+                if obj.__class__.__name__ == class_name:
+                    objectList.append(obj)
             print(objectList)
 
     def help_all(self):
@@ -152,13 +153,14 @@ class HBNBCommand(cmd.Cmd, BaseModel):
             print("** class name missing **")
             return
         args = line.split()
-        if args[0] not in HBNBCommand.__classes:
+        class_name = args[0]
+        if class_name not in HBNBCommand.__classes:
             print("** class doesn't exist **")
             return
         if len(args) == 1:
             print("** instance id missing **")
             return
-        key = args[0] + "." + args[1]
+        key = class_name + "." + args[1]
         if key not in storage.all().keys():
             print("** no instance found **")
             return
@@ -168,7 +170,7 @@ class HBNBCommand(cmd.Cmd, BaseModel):
         if len(args) == 3:
             print("** value missing **")
             return
-        key = "{}.{}".format(args[0], args[1])
+        key = "{}.{}".format(class_name, args[1])
         obj = storage.all()[key]
         setattr(obj, args[2], args[3])
         obj.save()
