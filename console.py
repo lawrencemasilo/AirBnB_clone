@@ -196,6 +196,13 @@ class HBNBCommand(cmd.Cmd, BaseModel):
             return
         if args[2] == "all":
             self.do_all(args[0])
+        elif args[2] == "count":
+            count = 0
+            for obj in storage.all().values():
+                if args[0] == type(obj).__name__:
+                    count += 1
+            print(count)
+            return
         else:
             print("** Unknown syntax: {}".format(line))
             return
