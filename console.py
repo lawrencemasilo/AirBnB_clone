@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """command interpreter"""
 import cmd
+import shlex
+from shlex import split
 from models.base_model import BaseModel
 from models.user import User
 from models.place import Place
@@ -178,6 +180,27 @@ class HBNBCommand(cmd.Cmd, BaseModel):
     def help_update(self):
         """(update) command documentation"""
         print("updates an instance")
+
+    def stripper(self, s):
+        """Strips line"""
+        new_str = s[s.find("(")+1:s.rfind(")")]
+        new_str = shlex.shlex(new_str, posix=True)
+        new_str.whitespace += ','
+        new_str.whitespace_split = True
+        return list(new_str)
+
+    def default(self, line):
+        """Default commands."""
+        sub_arg = self.stripper(line)
+        args = list(shlex.shlex(line, posix=True))
+        if args[0] not in HBNBCommand.__classes:
+            print("** Unknown syntax: {}".format(line))
+            return
+        if args[2] == "all":
+            self.do_all(args[0])
+        else:
+            print("** Unknown syntax: {}".format(line))
+            return
 
 
 if __name__ == '__main__':
