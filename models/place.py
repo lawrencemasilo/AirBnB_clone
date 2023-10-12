@@ -3,7 +3,7 @@
 This module contains a class with attributes
 that define a place
 """
-from base_model import BaseModel
+from models.base_model import BaseModel
 
 
 class Place(BaseModel):

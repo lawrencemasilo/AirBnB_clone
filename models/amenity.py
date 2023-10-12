@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """import modules for class"""
-from model.base_model import BaseModel
+from models.base_model import BaseModel
 
 
 """
