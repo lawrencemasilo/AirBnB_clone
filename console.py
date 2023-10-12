@@ -142,7 +142,7 @@ class HBNBCommand(cmd.Cmd, BaseModel):
             class_name = args[0]
             for obj in storage.all().values():
                 if obj.__class__.__name__ == class_name:
-                    objectList.append(obj)
+                    objectList.append(str(obj))
             print(objectList)
 
     def help_all(self):
