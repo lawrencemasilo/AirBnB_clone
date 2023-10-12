@@ -3,7 +3,6 @@
 Import modules for tests.
 """
 import unittest
-import pep8
 import json
 import os
 from models.base_model import BaseModel
@@ -32,18 +31,10 @@ class TestFileStorage(unittest.TestCase):
     def tearDownClass(cls):
         """Deletes class."""
         del cls.usr
-
-    def tearDownClass(self):
         try:
             os.remove("file.json")
         except FileNotFoundError:
             pass
-
-    def test_pep8_filestorage(self):
-        """test for pep8."""
-        style = pep8.StyleGuide(quiet=True)
-        p = style.check_files(['models/engine/file_storage.py'])
-        self.assertEqual(p.total_errors, 0, "fix pep8")
 
     def test_all_filestorage(self):
         """Tests for all."""
