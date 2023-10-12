@@ -205,6 +205,9 @@ class HBNBCommand(cmd.Cmd, BaseModel):
                     count += 1
             print(count)
             return
+        elif args[2] == "show":
+            key = args[0] + " " + sub_arg[0]
+            self.do_show(key)
         else:
             print("** Unknown syntax: {}".format(line))
             return
