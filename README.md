@@ -1,7 +1,8 @@
 # AirBnB Clone Project
 The first step to building our first full web application
 
-![hbnb logo]()
+![hbnb logo](https://github.com/Smambo/AirBnB_clone/assets/113464914/a2ea971d-d275-4901-ac7f-69a7939c3ffd)
+
 ## Description
 The goal of the project is to deploy on our server a simple copy of the [AirBnB website](https://www.airbnb.co.za/?locale=en&_set_bev_on_new_domain=1696855171_NzA3NWE0NjdlOTcw). It will not implement all the features, only some to cover the fundamental concepts of the higher level programming track
 
