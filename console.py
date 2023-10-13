@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """command interpreter"""
 import cmd
+import shlex
+from shlex import split
 from models.base_model import BaseModel
 from models.user import User
 from models.place import Place
@@ -140,7 +142,7 @@ class HBNBCommand(cmd.Cmd, BaseModel):
             class_name = args[0]
             for obj in storage.all().values():
                 if obj.__class__.__name__ == class_name:
-                    objectList.append(obj)
+                    objectList.append(str(obj))
             print(objectList)
 
     def help_all(self):
@@ -178,6 +180,67 @@ class HBNBCommand(cmd.Cmd, BaseModel):
     def help_update(self):
         """(update) command documentation"""
         print("updates an instance")
+
+    def stripper(self, s):
+        """Strips line"""
+        new_str = s[s.find("(")+1:s.rfind(")")]
+        new_str = shlex.shlex(new_str, posix=True)
+        new_str.whitespace += ','
+        new_str.whitespace_split = True
+        return list(new_str)
+
+    def dict_stripper(self, s):
+        """
+        Finds a dict while stripping line.
+        """
+        new_str = s[s.find("(")+1:s.rfind(")")]
+        try:
+            new_dict = new_str[new_str.find("{")+1:new_str.rfind("}")]
+            return eval("{" + new_dict + "}")
+        except Exception:
+            return None
+
+    def default(self, line):
+        """Default commands."""
+        sub_arg = self.stripper(line)
+        args = list(shlex.shlex(line, posix=True))
+        if args[0] not in HBNBCommand.__classes:
+            print("** Unknown syntax: {}".format(line))
+            return
+        if args[2] == "all":
+            self.do_all(args[0])
+        elif args[2] == "count":
+            count = 0
+            for obj in storage.all().values():
+                if args[0] == type(obj).__name__:
+                    count += 1
+            print(count)
+            return
+        elif args[2] == "show":
+            key = args[0] + " " + sub_arg[0]
+            self.do_show(key)
+        elif args[2] == "destroy":
+            key = args[0] + " " + sub_arg[0]
+            self.do_destroy(key)
+        elif args[2] == "update":
+            """
+            id_key = args[0] + "." + sub_arg[0]
+            new_dict = sub_arg[1] + " " + sub_arg[2]
+            self.do_update(id_key)
+            """
+            new_dict = self.dict_stripper(line)
+            if type(new_dict) is dict:
+                for key, val in new_dict.items():
+                    key_value = args[0] + " " + sub_arg[0]
+                    self.do_update(key_value + " " + '{} {}'.format(key, val))
+            else:
+                key = args[0]
+                for arg in sub_arg:
+                    key = key + " " + '{}'.format(arg)
+                self.do_update(key)
+        else:
+            print("** Unknown syntax: {}".format(line))
+            return
 
 
 if __name__ == '__main__':

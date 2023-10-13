@@ -1,4 +1,8 @@
 # AirBnB Clone Project
+The first step to building our first full web application
+
+![hbnb logo](https://github.com/Smambo/AirBnB_clone/assets/113464914/a2ea971d-d275-4901-ac7f-69a7939c3ffd)
+
 ## Description
 The goal of the project is to deploy on our server a simple copy of the [AirBnB website](https://www.airbnb.co.za/?locale=en&_set_bev_on_new_domain=1696855171_NzA3NWE0NjdlOTcw). It will not implement all the features, only some to cover the fundamental concepts of the higher level programming track
 
@@ -22,7 +26,7 @@ $ ./console.py
 
 Documented commands (type help <topic>):
 ========================================
-EOF  help  quit
+EOF  all  create  destroy  help  quit  show  update
 
 (hbnb) 
 (hbnb) 
@@ -38,7 +42,7 @@ $ echo "help" | ./console.py
 
 Documented commands (type help <topic>):
 ========================================
-EOF  help  quit
+EOF  all  create  destroy  help  quit  show  update
 (hbnb) 
 $
 $ cat test_help
@@ -49,7 +53,23 @@ $ cat test_help | ./console.py
 
 Documented commands (type help <topic>):
 ========================================
-EOF  help  quit
+EOF  all  create  destroy  help  quit  show  update
 (hbnb) 
 $
 ```
+
+### Running Unittests
+
+Make sure to run the tests from the root of the repository
+
+In interactive mode:
+
+`python3 -m unittest discover tests`
+
+Non-interactive mode:
+
+`echo "python3 -m unittest discover tests" | bash`
+
+* To run tests for a specific file, use the absolute path:
+
+  E.g. `python3 -m unittest tests/test_models/test_base_model.py`
