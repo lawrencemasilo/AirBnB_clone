@@ -197,7 +197,7 @@ class HBNBCommand(cmd.Cmd, BaseModel):
         try:
             new_dict = new_str[new_str.find("{")+1:new_str.rfind("}")]
             return eval("{" + new_dict + "}")
-        except:
+        except Exception:
             return None
 
     def default(self, line):
