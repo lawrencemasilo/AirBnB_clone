@@ -1,7 +1,7 @@
 # AirBnB Clone Project
 The first step to building our first full web application
 
-![hbnb logo]()
+![hbnb logo](https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2018/6/65f4a1dd9c51265f49d0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20231013%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231013T102553Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=d5c5cdec2c7fe48ba11b4a070dbcfa4370bed0c6c9d446fd8fadca04942e9f5a)
 ## Description
 The goal of the project is to deploy on our server a simple copy of the [AirBnB website](https://www.airbnb.co.za/?locale=en&_set_bev_on_new_domain=1696855171_NzA3NWE0NjdlOTcw). It will not implement all the features, only some to cover the fundamental concepts of the higher level programming track
 
