@@ -23,7 +23,7 @@ class TestBaseModel(unittest.TestCase):
         del cls.testBase
         try:
             os.remove("file.json")
-        except:
+        except FileNotFoundError:
             pass
 
     """def test_pep8_basemodel(self):

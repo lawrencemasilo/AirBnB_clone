@@ -21,7 +21,7 @@ class TestAmenity(unittest.TestCase):
         del cls.testAmenity
         try:
             os.remove("file.json")
-        except:
+        except FileNotFoundError:
             pass
 
     def test_docstring_Amenity(self):
@@ -44,7 +44,8 @@ class TestAmenity(unittest.TestCase):
     def test_save(self):
         """Tests save()."""
         self.testAmenity.save()
-        self.assertNotEqual(self.testAmenity.created_at, self.testAmenity.updated_at)
+        self.assertNotEqual(self.testAmenity.created_at,
+                            self.testAmenity.updated_at)
 
     def test_to_dict(self):
         """Tests dict."""
@@ -52,7 +53,8 @@ class TestAmenity(unittest.TestCase):
 
     def test_inheritance_Amen(self):
         """Tests for inheritance."""
-        self.assertTrue(issubclass(self.testAmenity.__class__, BaseModel), True)
+        self.assertTrue(issubclass(
+                        self.testAmenity.__class__, BaseModel), True)
 
 
 if __name__ == "__main__":
