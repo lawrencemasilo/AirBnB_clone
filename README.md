@@ -60,36 +60,16 @@ $
 
 ### Running Unittests
 
+Make sure to run the tests from the root of the repository
+
 In interactive mode:
 
-```
-smambo@lenovo-ubuntu:~/AirBnB_clone$ python3 -m unittest discover tests
-..
-Documented commands (type help <topic>):
-========================================
-EOF  all  create  destroy  help  quit  show  update
-
-.....................................
-----------------------------------------------------------------------
-Ran 39 tests in 0.007s
-
-OK
-smambo@lenovo-ubuntu:~/AirBnB_clone$
-```
+`python3 -m unittest discover tests`
 
 Non-interactive mode:
 
-```
-smambo@lenovo-ubuntu:~/AirBnB_clone$ echo "python3 -m unittest discover tests" | bash
-..
-Documented commands (type help <topic>):
-========================================
-EOF  all  create  destroy  help  quit  show  update
+`echo "python3 -m unittest discover tests" | bash`
 
-.....................................
-----------------------------------------------------------------------
-Ran 39 tests in 0.007s
+* To run tests for a specific file, use the absolute path:
 
-OK
-smambo@lenovo-ubuntu:~/AirBnB_clone$
-```
+  E.g. `python3 -m unittest tests/test_models/test_base_model.py`
