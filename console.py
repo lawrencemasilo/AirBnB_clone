@@ -232,11 +232,11 @@ class HBNBCommand(cmd.Cmd, BaseModel):
             if type(new_dict) is dict:
                 for key, val in new_dict.items():
                     key_value = args[0] + " " + sub_arg[0]
-                    self.do_update(key_value + ' "{}" "{}"'.format(key, val))
+                    self.do_update(key_value + '"{}" "{}"'.format(key, val))
             else:
                 key = args[0]
                 for arg in sub_arg:
-                    key = key + " " + '"{}"'.format(arg)
+                    key = key + " " + '{}'.format(arg)
                 self.do_update(key)
         else:
             print("** Unknown syntax: {}".format(line))
