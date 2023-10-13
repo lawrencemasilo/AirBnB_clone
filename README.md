@@ -1,4 +1,7 @@
 # AirBnB Clone Project
+The first step to building our first full web application
+
+![hbnb logo]()
 ## Description
 The goal of the project is to deploy on our server a simple copy of the [AirBnB website](https://www.airbnb.co.za/?locale=en&_set_bev_on_new_domain=1696855171_NzA3NWE0NjdlOTcw). It will not implement all the features, only some to cover the fundamental concepts of the higher level programming track
 
@@ -22,7 +25,7 @@ $ ./console.py
 
 Documented commands (type help <topic>):
 ========================================
-EOF  help  quit
+EOF  all  create  destroy  help  quit  show  update
 
 (hbnb) 
 (hbnb) 
@@ -38,7 +41,7 @@ $ echo "help" | ./console.py
 
 Documented commands (type help <topic>):
 ========================================
-EOF  help  quit
+EOF  all  create  destroy  help  quit  show  update
 (hbnb) 
 $
 $ cat test_help
@@ -49,7 +52,43 @@ $ cat test_help | ./console.py
 
 Documented commands (type help <topic>):
 ========================================
-EOF  help  quit
+EOF  all  create  destroy  help  quit  show  update
 (hbnb) 
 $
+```
+
+### Running Unittests
+
+In interactive mode:
+
+```
+smambo@lenovo-ubuntu:~/AirBnB_clone$ python3 -m unittest discover tests
+..
+Documented commands (type help <topic>):
+========================================
+EOF  all  create  destroy  help  quit  show  update
+
+.....................................
+----------------------------------------------------------------------
+Ran 39 tests in 0.007s
+
+OK
+smambo@lenovo-ubuntu:~/AirBnB_clone$
+```
+
+Non-interactive mode:
+
+```
+smambo@lenovo-ubuntu:~/AirBnB_clone$ echo "python3 -m unittest discover tests" | bash
+..
+Documented commands (type help <topic>):
+========================================
+EOF  all  create  destroy  help  quit  show  update
+
+.....................................
+----------------------------------------------------------------------
+Ran 39 tests in 0.007s
+
+OK
+smambo@lenovo-ubuntu:~/AirBnB_clone$
 ```

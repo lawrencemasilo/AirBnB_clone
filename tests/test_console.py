@@ -46,3 +46,18 @@ class TestConsole(unittest.TestCase):
         """Test for help"""
         with patch('sys.stdout', new=StringIO()) as f:
             self.cnsl.onecmd("help")
+
+    def test_doctstrings_cnsl(self):
+        """Tests for docstrings."""
+        self.assertIsNotNone(console.__doc__)
+        self.assertIsNotNone(HBNBCommand.emptyline.__doc__)
+        self.assertIsNotNone(HBNBCommand.do_quit.__doc__)
+        self.assertIsNotNone(HBNBCommand.do_EOF.__doc__)
+        self.assertIsNotNone(HBNBCommand.do_create.__doc__)
+        self.assertIsNotNone(HBNBCommand.do_show.__doc__)
+        self.assertIsNotNone(HBNBCommand.do_destroy.__doc__)
+        self.assertIsNotNone(HBNBCommand.do_all.__doc__)
+        self.assertIsNotNone(HBNBCommand.do_update.__doc__)
+        self.assertIsNotNone(HBNBCommand.stripper.__doc__)
+        self.assertIsNotNone(HBNBCommand.dict_stripper.__doc__)
+        self.assertIsNotNone(HBNBCommand.default.__doc__)
