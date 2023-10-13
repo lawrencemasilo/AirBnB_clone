@@ -189,6 +189,17 @@ class HBNBCommand(cmd.Cmd, BaseModel):
         new_str.whitespace_split = True
         return list(new_str)
 
+    def dict_stripper(self, s):
+        """
+        Finds a dict while stripping line.
+        """
+        new_str = s[s.find("(")+1:s.rfind(")")]
+        try:
+            new_dict = new_str[new_str.find("{")+1:new_str.rfind("}")]
+            return eval("{" + new_dict + "}")
+        except:
+            return None
+
     def default(self, line):
         """Default commands."""
         sub_arg = self.stripper(line)
@@ -211,6 +222,22 @@ class HBNBCommand(cmd.Cmd, BaseModel):
         elif args[2] == "destroy":
             key = args[0] + " " + sub_arg[0]
             self.do_destroy(key)
+        elif args[2] == "update":
+            """
+            id_key = args[0] + "." + sub_arg[0]
+            new_dict = sub_arg[1] + " " + sub_arg[2]
+            self.do_update(id_key)
+            """
+            new_dict = self.dict_stripper(line)
+            if type(new_dict) is dict:
+                for key, val in new_dict.items():
+                    key_value = args[0] + " " + sub_arg[0]
+                    self.do_update(key_value + ' "{}" "{}"'.format(key, val))
+            else:
+                key = args[0]
+                for arg in sub_arg:
+                    key = key + " " + '"{}"'.format(arg)
+                self.do_update(key)
         else:
             print("** Unknown syntax: {}".format(line))
             return
