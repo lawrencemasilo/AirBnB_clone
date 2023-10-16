@@ -150,6 +150,109 @@ class TestConsole(unittest.TestCase):
             self.assertFalse(HBNBCommand().onecmd("Review.count()"))
             self.assertEqual("2", f.getvalue().strip())
 
+    def test_show_dot_notattion(self):
+        """
+        Tests for console commmand notation.
+        """
+        err_msg = "** no instance found **"
+
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("BaseModel.show(3)"))
+            self.assertEqual(err_msg, f.getvalue().strip())
+
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("User.show(3)"))
+            self.assertEqual(err_msg, f.getvalue().strip())
+
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("State.show(3)"))
+            self.assertEqual(err_msg, f.getvalue().strip())
+
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("City.show(3)"))
+            self.assertEqual(err_msg, f.getvalue().strip())
+
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("Amenity.show(3)"))
+            self.assertEqual(err_msg, f.getvalue().strip())
+
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("Place.show(3)"))
+            self.assertEqual(err_msg, f.getvalue().strip())
+
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("Review.show(3)"))
+            self.assertEqual(err_msg, f.getvalue().strip())
+
+    def test_destroy_dot_notation(self):
+        """
+        Tests for console command notation.
+        """
+        err_msg = "** no instance found **"
+
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("BaseModel.destroy(3)"))
+            self.assertEqual(err_msg, f.getvalue().strip())
+
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("User.destroy(3)"))
+            self.assertEqual(err_msg, f.getvalue().strip())
+
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("State.destroy(3)"))
+            self.assertEqual(err_msg, f.getvalue().strip())
+
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("City.destroy(1)"))
+            self.assertEqual(err_msg, f.getvalue().strip())
+
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("Amenity.destroy(300)"))
+            self.assertEqual(err_msg, f.getvalue().strip())
+
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("Place.destroy(00)"))
+            self.assertEqual(err_msg, f.getvalue().strip())
+
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("Review.destroy(35)"))
+            self.assertEqual(err_msg, f.getvalue().strip())
+
+    def test_update_dot_notation(self):
+        """
+        Tests for console command notation.
+        """
+        err_msg = ''
+
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("BaseModel.update(2)"))
+            self.assertEqual(err_msg, f.getvalue().strip())
+
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("User.update(2)"))
+            self.assertEqual(err_msg, f.getvalue().strip())
+
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("State.update(2)"))
+            self.assertEqual(err_msg, f.getvalue().strip())
+
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("City.update(2)"))
+            self.assertEqual(err_msg, f.getvalue().strip())
+
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("Amenity.update(2)"))
+            self.assertEqual(err_msg, f.getvalue().strip())
+
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("Place.update(2)"))
+            self.assertEqual(err_msg, f.getvalue().strip())
+
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("Review.update(2)"))
+            self.assertEqual(err_msg, f.getvalue().strip())
+
+
 
 if __name__ == "__main__":
     unittest.main()
