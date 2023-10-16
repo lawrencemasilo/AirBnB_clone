@@ -61,3 +61,51 @@ class TestConsole(unittest.TestCase):
         self.assertIsNotNone(HBNBCommand.stripper.__doc__)
         self.assertIsNotNone(HBNBCommand.dict_stripper.__doc__)
         self.assertIsNotNone(HBNBCommand.default.__doc__)
+
+    def test_all_dot_notation(self):
+        """
+        Tests for console command notation.
+        """
+        with patch("sys.stdout", new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("create BaseModel"))
+            self.assertFalse(HBNBCommand().onecmd("create User"))
+            self.assertFalse(HBNBCommand().onecmd("create State"))
+            self.assertFalse(HBNBCommand().onecmd("create Place"))
+            self.assertFalse(HBNBCommand().onecmd("create City"))
+            self.assertFalse(HBNBCommand().onecmd("create Amenity"))
+            self.assertFalse(HBNBCommand().onecmd("create Review"))
+
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("BaseModel.all()"))
+            self.assertIn("BaseModel", f.getvalue().strip())
+            self.assertNotIn("User", f.getvalue().strip())
+
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("Review.all()"))
+            self.assertIn("Review", f.getvalue().strip())
+            self.assertNotIn("BaseModel", f.getvalue().strip())
+
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("User.all()"))
+            self.assertIn("User", f.getvalue().strip())
+            self.assertNotIn("BaseModel", f.getvalue().strip())
+
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("State.all()"))
+            self.assertIn("State", f.getvalue().strip())
+            self.assertNotIn("BaseModel", f.getvalue().strip())
+
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("City.all()"))
+            self.assertIn("City", f.getvalue().strip())
+            self.assertNotIn("BaseModel", f.getvalue().strip())
+
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("Amenity.all()"))
+            self.assertIn("Amenity", f.getvalue().strip())
+            self.assertNotIn("BaseModel", f.getvalue().strip())
+
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("Place.all()"))
+            self.assertIn("Place", f.getvalue().strip())
+            self.assertNotIn("BaseModel", f.getvalue().strip())
