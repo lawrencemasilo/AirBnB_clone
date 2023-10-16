@@ -66,7 +66,7 @@ class TestConsole(unittest.TestCase):
         """
         Tests for console command notation.
         """
-        with patch("sys.stdout", new=StringIO()) as f:
+        with patch('sys.stdout', new=StringIO()) as f:
             self.assertFalse(HBNBCommand().onecmd("create BaseModel"))
             self.assertFalse(HBNBCommand().onecmd("create User"))
             self.assertFalse(HBNBCommand().onecmd("create State"))
@@ -109,3 +109,47 @@ class TestConsole(unittest.TestCase):
             self.assertFalse(HBNBCommand().onecmd("Place.all()"))
             self.assertIn("Place", f.getvalue().strip())
             self.assertNotIn("BaseModel", f.getvalue().strip())
+
+    def test_count_dot_notation(self):
+        """
+        Test for console command notation.
+        """
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("create BaseModel"))
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("BaseModel.count()"))
+            self.assertEqual("2", f.getvalue().strip())
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("create User"))
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("User.count()"))
+            self.assertEqual("2", f.getvalue().strip())
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("create State"))
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("State.count()"))
+            self.assertEqual("2", f.getvalue().strip())
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("create Place"))
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("Place.count()"))
+            self.assertEqual("2", f.getvalue().strip())
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("create City"))
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("City.count()"))
+            self.assertEqual("2", f.getvalue().strip())
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("create Amenity"))
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("Amenity.count()"))
+            self.assertEqual("2", f.getvalue().strip())
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("create Review"))
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.assertFalse(HBNBCommand().onecmd("Review.count()"))
+            self.assertEqual("2", f.getvalue().strip())
+
+
+if __name__ == "__main__":
+    unittest.main()
